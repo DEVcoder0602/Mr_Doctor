@@ -1,23 +1,25 @@
 import "./App.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Home } from "./Components/Home";
+import { Login } from "./Components/Login";
+import { Register } from "./Components/Register";
 
 function App() {
+  const user = false;
   return (
-    <div className="App">
-      <div className="App-header">
-        <h1>
-          Welcome to <strong>Mr_Doctor</strong>
-        </h1>
-        <p>
-          Please
-          <a href="/">Register</a>
-          to get started.
-        </p>
-        <p>
-          Already Registered ?<a href="/">login</a>
-          here..
-        </p>
-      </div>
-    </div>
+    // <Home/>
+    // <Register/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" exact element={user ? <Home /> : <Login />} />
+        <Route
+          path="/register"
+          exact
+          element={user ? <Home /> : <Register />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
